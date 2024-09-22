@@ -1,14 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    List<Item> items;
-    ItemSO[] itemTypes;
+  
+    InventorySlot[] itemSlots;
     public void AddItem(ItemSO _item, int _count)
     {
-        foreach (Item i in items)
+        for (int i = 0; i < itemSlots.Length; i++)
+        {
+            if (itemSlots[i].empty)
+            {
+                itemSlots[i].SetItem(_item.CreateItem());
+            }
+        }
+    /*    foreach (Item i in items)
         {
             if (i.id == _item.id)
             {
@@ -18,8 +26,17 @@ public class InventoryManager : MonoBehaviour
         }
 
         Item newItem = _item.CreateItem();
-        newItem.id = _item.id;
-        newItem.count = _count;
-        items.Add(newItem);
+
+        items.Add(newItem);*/
+    }
+}
+public class InventorySlot
+{
+   public bool empty = true;
+    Item item;
+
+    public void SetItem(Item _item)
+    {
+        item = _item;
     }
 }
