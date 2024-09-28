@@ -30,7 +30,7 @@ public class InventoryManager : MonoBehaviour
         items.Add(newItem);*/
     }
 }
-public class InventorySlot
+public class InventorySlot : MonoBehaviour
 {
    public bool empty = true;
     Item item;

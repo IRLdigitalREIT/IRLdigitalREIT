@@ -1,13 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
-
-
-
 
 public enum ItemType
 {
@@ -29,7 +21,7 @@ public enum Rarity
 
 
 [CreateAssetMenu(fileName = "Item", menuName = "Items/BaseItem", order = 1)]
-public abstract class ItemSO : ScriptableObject
+public class ItemSO : ScriptableObject
 {
     public int id;
     public string itemName;
@@ -44,8 +36,9 @@ public abstract class ItemSO : ScriptableObject
         return newItem;
     }
 }
+
 [System.Serializable]
-public class Item
+public class Item : MonoBehaviour
 {
     public int id;
     public string itemName;
